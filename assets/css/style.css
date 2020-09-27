@@ -1,0 +1,26 @@
+/* Start Quiz Page */
+
+.jumbotron {
+  background-color: white;
+}
+
+.container {
+   text-align: center;
+   padding: auto;
+}
+
+h1, p, button {
+  padding: 5px;
+}
+
+/* Button Styling */
+.btn {
+  background-color: #6338A9;
+  border: 0 none;
+  padding: auto 10px;
+}
+
+.btn:hover {
+    background-color: #4F2A89;
+}
+
