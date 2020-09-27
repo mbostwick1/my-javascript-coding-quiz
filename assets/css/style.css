@@ -1,4 +1,27 @@
+/* nav bar */
+
+nav {
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#high-scores {
+  color: #6338A9;  
+}
+
+#high-scores:hover {
+  color: #4F2A89;
+  text-decoration: none;
+}
+
+#timer {
+  float: right;
+}
+
 /* Start Quiz Page */
+
+
 
 .jumbotron {
   background-color: white;
