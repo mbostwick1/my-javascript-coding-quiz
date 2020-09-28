@@ -1,5 +1,5 @@
 // constant variables //
-
+var timer = document.getElementById("timer");
 var headline = document.getElementById("headline");
 var question = document.getElementById("question");
 var pText = document.getElementById("pText");
@@ -12,12 +12,25 @@ var wrongAnswerDiv = document.getElementById("wrongAnswer");
 
 //Timer Variables //
 
+var interval;
+var questionIndex = -1;
+var secondsLeft = 75;
+
 // START QUIZ //
 startQuiz();
 
 // START TIMER //
 
+function startTimer() {
 
+  interval = setInterval(function(){
+    secondsLeft--;
+    timer.textContent = secondsLeft;
+    if (secondsLeft === 0){
+      clearInterval(interval);
+    } 
+  }, 1000);
+};
 
 function startQuiz() {
   //Hide Question Container//
@@ -36,7 +49,7 @@ function startQuiz() {
 }
 
 function questionOne() {
-
+  startTimer(); 
   //Hide and show Text/Buttons
   headline.innerHTML = "";
   pText.innerHTML = "";
@@ -57,47 +70,47 @@ function questionOne() {
 
   // on clicks for answer buttons //
 
-  btnOne.onclick = questionTwo;
-  btnTwo.onclick = questionTwo;
-  btnThree.onclick = questionTwo;
-  btnFour.onclick = questionTwo;
+  btnOne.onclick = answerOne;
+  btnTwo.onclick = answerOne;
+  btnThree.onclick = answerOne;
+  btnFour.onclick = answerOne;
    // right answer moves on to next questions //
 
-
+  function answerOne() {
+    if(btnThree){
+      questionTwo();
+     } else () {
+      wrongAnswer();
+      questionTwo();
+     }
+  };
   
-  //  if (btnThree === true){
-  //   questionTwo();
-  //  } else {
-  //    wrongAnswer();
-  //    questionTwo();
-  //  }
-
  // log users input to local storage //
-
-    
-}
-
+   
+};
 
 function wrongAnswer() {
-     // wrong answer displays wrong answer div and subtracts 10 seconds //
+     // wrong answer displays wrong answer div //
      wrongAnswerDiv.style.visibility = "visible";
      setTimeout(function(){
       wrongAnswerDiv.style.visibility = "hidden";
    }, 3000);
 
+  //  subtracts 10 seconds //
+    timer.innerHTML = secondsLeft - 10000;
 
-}
+};
 
 function questionTwo() {
 
   //Question//
-  question.innerHTML = "Commonly used data types DO NOT include:";
+  question.innerHTML = "The condition in an if/else statement is enclosed within ________.";
 
   //Choices//
-  btnOne.innerHTML = "1. strings";
-  btnTwo.innerHTML = "2. booleans";
-  btnThree.innerHTML = "3. alerts";
-  btnFour.innerHTML = "4. numbers";
+  btnOne.innerHTML = "1. quotes";
+  btnTwo.innerHTML = "2. curly brackets";
+  btnThree.innerHTML = "3. parentheses";
+  btnFour.innerHTML = "4. square brackets";
 
   // on clicks for answer buttons //
 
@@ -105,19 +118,13 @@ function questionTwo() {
   btnTwo.onclick = questionTwo;
   btnThree.onclick = questionTwo;
   btnFour.onclick = questionTwo;
+
    // right answer moves on to next questions //
   
-   if (btnThree === true){
-    questionTwo();
-   } else {
-     wrongAnswer();
-     questionTwo();
-   }
-
  // log users input to local storage //
 
     
-}
+};
 
 
 //Logging Scores
