@@ -8,9 +8,16 @@ var btnOne = document.getElementById("btn1");
 var btnTwo = document.getElementById("btn2");
 var btnThree = document.getElementById("btn3");
 var btnFour = document.getElementById("btn4");
-var wrongAnswer = document.getElementById("wrongAnswer");
+var wrongAnswerDiv = document.getElementById("wrongAnswer");
+
+//Timer Variables //
 
 // START QUIZ //
+startQuiz();
+
+// START TIMER //
+
+
 
 function startQuiz() {
   //Hide Question Container//
@@ -18,6 +25,7 @@ function startQuiz() {
   btnTwo.style.visibility = "hidden";
   btnThree.style.visibility = "hidden";
   btnFour.style.visibility = "hidden";
+  wrongAnswerDiv.style.visibility = "hidden";
   // Headline, paragraph and start quiz attributes //
   headline.innerHTML = "Coding Quiz Challenge";
   pText.innerHTML =
@@ -26,8 +34,6 @@ function startQuiz() {
   btn.onclick = questionOne;
     
 }
-
-startQuiz();
 
 function questionOne() {
 
@@ -51,22 +57,67 @@ function questionOne() {
 
   // on clicks for answer buttons //
 
-  
-  //if else for right answer and wrong answers //
-
-  // right answer moves on to next questions //
-  // wrong answer displays wrong answer div and subtracts 10 seconds //
-
-  // log users input to local storage //
+  btnOne.onclick = questionTwo;
+  btnTwo.onclick = questionTwo;
+  btnThree.onclick = questionTwo;
+  btnFour.onclick = questionTwo;
+   // right answer moves on to next questions //
 
 
   
-  document.getElementById("btn").onclick = questionTwo;
+  //  if (btnThree === true){
+  //   questionTwo();
+  //  } else {
+  //    wrongAnswer();
+  //    questionTwo();
+  //  }
+
+ // log users input to local storage //
+
     
 }
 
 
-//TIMER//
+function wrongAnswer() {
+     // wrong answer displays wrong answer div and subtracts 10 seconds //
+     wrongAnswerDiv.style.visibility = "visible";
+     setTimeout(function(){
+      wrongAnswerDiv.style.visibility = "hidden";
+   }, 3000);
+
+
+}
+
+function questionTwo() {
+
+  //Question//
+  question.innerHTML = "Commonly used data types DO NOT include:";
+
+  //Choices//
+  btnOne.innerHTML = "1. strings";
+  btnTwo.innerHTML = "2. booleans";
+  btnThree.innerHTML = "3. alerts";
+  btnFour.innerHTML = "4. numbers";
+
+  // on clicks for answer buttons //
+
+  btnOne.onclick = questionTwo;
+  btnTwo.onclick = questionTwo;
+  btnThree.onclick = questionTwo;
+  btnFour.onclick = questionTwo;
+   // right answer moves on to next questions //
+  
+   if (btnThree === true){
+    questionTwo();
+   } else {
+     wrongAnswer();
+     questionTwo();
+   }
+
+ // log users input to local storage //
+
+    
+}
 
 
 //Logging Scores
