@@ -70,21 +70,20 @@ function questionOne() {
 
   // on clicks for answer buttons //
 
-  btnOne.onclick = answerOne;
-  btnTwo.onclick = answerOne;
-  btnThree.onclick = answerOne;
-  btnFour.onclick = answerOne;
+  btnOne.onclick = answerWrong;
+  btnTwo.onclick = answerWrong;
+  btnThree.onclick = answerRight;
+  btnFour.onclick = answerWrong;
    // right answer moves on to next questions //
 
-  function answerOne() {
-    if(btnThree){
-      questionTwo();
-     } else () {
-      wrongAnswer();
-      questionTwo();
-     }
+  function answerRight() {
+    questionTwo();
   };
   
+  function answerWrong() {
+    wrongAnswer();
+    questionTwo();
+};
  // log users input to local storage //
    
 };
@@ -94,10 +93,11 @@ function wrongAnswer() {
      wrongAnswerDiv.style.visibility = "visible";
      setTimeout(function(){
       wrongAnswerDiv.style.visibility = "hidden";
-   }, 3000);
+   }, 2000);
 
   //  subtracts 10 seconds //
-    timer.innerHTML = secondsLeft - 10000;
+    secondsLeft = secondsLeft - 10;
+    timer.innerHTML = secondsLeft;
 
 };
 
