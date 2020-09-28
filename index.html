@@ -20,11 +20,20 @@
   </head>
   <body>
     <div class="jumbotron jumbotron-fluid">
-      <div class="container col-lg-6">
+      <div id="startContainer" class="container col-lg-6">
         <h1 id="headline"; class="display-4"></h1>
         <p id="pText" class="lead"></p>
-        <button id="btn" class="btn btn-primary btn-sm" type="submit">Start Quiz</button>
+        <h2 id="question"; class="display-9"></h2>
+        <button id="btn" class="btn btn-sm"></button>
+        <ul id="choices">
+          <button id="btn1" class="btn btn-sm"></button><br>
+          <button id="btn2" class="btn btn-sm"></button><br>
+          <button id="btn3" class="btn btn-sm"></button><br>
+          <button id="btn4" class="btn btn-sm"></button><br>
+        </ul>
+        <div id="wrongAnswer"></div>
       </div>
+
     </div>
 
     <script src="./assets/js/script.js"></script>
