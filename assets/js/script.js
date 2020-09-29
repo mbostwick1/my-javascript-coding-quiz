@@ -10,8 +10,10 @@ var btnThree = document.getElementById("btn3");
 var btnFour = document.getElementById("btn4");
 var answerDiv = document.getElementById("answer");
 var answerText = document.getElementById("answer-text");
-var highScoreHeadline = document.getElementById("headline-HS");
-var listOfScores = document.getElementById("list-of-scores");
+var form = document.getElementById("form");
+var container = document.getElementById("startContainer");
+var choices = document.getElementById("choices");
+var submit = document.getElementById("submit");
 
 // Function to run start quiz //
 startQuiz();
@@ -72,6 +74,8 @@ function startQuiz() {
   btnThree.style.visibility = "hidden";
   btnFour.style.visibility = "hidden";
   answerDiv.style.visibility = "hidden";
+  form.style.visibility = "hidden";
+  container.removeChild(form);
   // Headline, paragraph and start quiz attributes //
   headline.innerHTML = "Coding Quiz Challenge";
   pText.innerHTML =
@@ -90,6 +94,7 @@ function questionOne() {
   btnTwo.style.visibility = "visible";
   btnThree.style.visibility = "visible";
   btnFour.style.visibility = "visible";
+  container.removeChild(btn);
 
   //Question//
   question.innerHTML = "Commonly used data types DO NOT include:";
@@ -228,12 +233,10 @@ function questionFive() {
 function answerFinalRight() {
   correctAnswer();
   // LOG TIME and go to high score page//
-  // timer.textContent = secondsLeft;
-  // finalScore = localStorage.getItem(secondsLeft);
   finalScore = secondsLeft;
-  // interval.textContent = finalScore;
   console.log(finalScore);
   clearInterval(interval);
+  localStorage.setItem("finalScore", finalScore);
   
   yourFinalScore();
 
@@ -243,9 +246,9 @@ function answerFinalWrong() {
   wrongAnswer();
   // LOG TIME - 10 seconds and go to high score page//
   finalScore = secondsLeft - 10;
-  // interval.textContent = finalScore;
   console.log(finalScore);
   clearInterval(interval);
+  localStorage.setItem("finalScore", finalScore);
 
   yourFinalScore();
 }
@@ -258,19 +261,22 @@ function yourFinalScore() {
   btnTwo.style.visibility = "hidden";
   btnThree.style.visibility = "hidden";
   btnFour.style.visibility = "hidden";
+  //Hide timer//
   timer.style.visibility = "hidden";
 
-  //Hide timer//
+  //Headline and Final Score display//
 
   question.innerHTML = "All Done!";
-  //Create text element to display final score //
+  pText.innerHTML = "Your final score is " + finalScore + ".";
+  pText.style.textAlign = "left";
 
-  pText.innerHTML = "Your final score is " + finalScore
-  // Create text Enter Initials //
-
-  //Create input field for initials//
+  // FORM display and hiding other elements //
+  form.style.visibility = "visible";
+  container.appendChild(form);
+  container.removeChild(choices);
 
   //Submit button //
+
 
 
 }
