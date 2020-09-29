@@ -21,8 +21,6 @@ nav {
 
 /* Start Quiz Page */
 
-
-
 .jumbotron {
   background-color: white;
 }
@@ -54,13 +52,26 @@ h1, p, button {
   margin: 3px;
 }
 
+ /* Removes blue bootstrap halo */
+
+ #btn, #btn1, #btn2, #btn3, #btn4 {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Choices/Answer Div */
+
+#choices {
+  padding-left: 20px;
+}
+
 #choices, #answer {
-  margin-left: 30px;
   text-align: left;
 }
 
 #answer, #answer-text {
-  padding-left: 30px;
-  padding-right: 30px;
   font-style: italic;
 }
+
+/* High Scores */
+

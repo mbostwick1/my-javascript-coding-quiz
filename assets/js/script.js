@@ -11,15 +11,12 @@ var btnFour = document.getElementById("btn4");
 var answerDiv = document.getElementById("answer");
 var answerText = document.getElementById("answer-text");
 
-
-
 // Function to run start quiz //
 startQuiz();
 
 //Timer Variables //
 
 var interval;
-var questionIndex = -1;
 var secondsLeft = 75;
 
 // START TIMER //
@@ -43,7 +40,7 @@ function wrongAnswer() {
   
   setTimeout(function () {
     answerDiv.style.visibility = "hidden";
-  }, 2000);
+  }, 3000);
 
   //  subtracts 10 seconds //
   secondsLeft = secondsLeft - 10;
@@ -59,7 +56,7 @@ function correctAnswer() {
 
   setTimeout(function () {
     answerDiv.style.visibility = "hidden";
-  }, 2000);
+  }, 3000);
 
 }
 
@@ -227,17 +224,19 @@ function questionFive() {
 
   function answerRight() {
     // LOG TIME and go to high score page//
+    // timer.textContent = secondsLeft;
+    // finalScore = localStorage.getItem(secondsLeft);
+    var finalScore = secondsLeft;
+    console.log(finalScore)
+
   }
 
   function answerWrong() {
     // LOG TIME - 10 seconds and go to high score page//
+    var finalScore = secondsLeft - 10;
+    console.log(finalScore)
   }
 }
-
-
-
-
-
 
 //Logging Scores
 
