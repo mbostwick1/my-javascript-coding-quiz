@@ -10,6 +10,8 @@ var btnThree = document.getElementById("btn3");
 var btnFour = document.getElementById("btn4");
 var answerDiv = document.getElementById("answer");
 var answerText = document.getElementById("answer-text");
+var highScoreHeadline = document.getElementById("headline-HS");
+var listOfScores = document.getElementById("list-of-scores");
 
 // Function to run start quiz //
 startQuiz();
@@ -18,6 +20,7 @@ startQuiz();
 
 var interval;
 var secondsLeft = 75;
+var finalScore;
 
 // START TIMER //
 
@@ -203,7 +206,6 @@ function questionFour() {
   }
 }
 
-
 function questionFive() {
   //Question//
   question.innerHTML =
@@ -217,26 +219,58 @@ function questionFive() {
 
   // on clicks for answer buttons //
 
-  btnOne.onclick = answerWrong;
-  btnTwo.onclick = answerWrong;
-  btnThree.onclick = answerWrong;
-  btnFour.onclick = answerRight;
-
-  function answerRight() {
-    // LOG TIME and go to high score page//
-    // timer.textContent = secondsLeft;
-    // finalScore = localStorage.getItem(secondsLeft);
-    var finalScore = secondsLeft;
-    console.log(finalScore)
-
-  }
-
-  function answerWrong() {
-    // LOG TIME - 10 seconds and go to high score page//
-    var finalScore = secondsLeft - 10;
-    console.log(finalScore)
-  }
+  btnOne.onclick = answerFinalWrong;
+  btnTwo.onclick = answerFinalWrong;
+  btnThree.onclick = answerFinalWrong;
+  btnFour.onclick = answerFinalRight;
 }
 
-//Logging Scores
+function answerFinalRight() {
+  correctAnswer();
+  // LOG TIME and go to high score page//
+  // timer.textContent = secondsLeft;
+  // finalScore = localStorage.getItem(secondsLeft);
+  finalScore = secondsLeft;
+  // interval.textContent = finalScore;
+  console.log(finalScore);
+  clearInterval(interval);
+  
+  yourFinalScore();
 
+}
+
+function answerFinalWrong() {
+  wrongAnswer();
+  // LOG TIME - 10 seconds and go to high score page//
+  finalScore = secondsLeft - 10;
+  // interval.textContent = finalScore;
+  console.log(finalScore);
+  clearInterval(interval);
+
+  yourFinalScore();
+}
+
+// High Scores Page //
+
+function yourFinalScore() {
+  // event.preventDefault();
+  btnOne.style.visibility = "hidden";
+  btnTwo.style.visibility = "hidden";
+  btnThree.style.visibility = "hidden";
+  btnFour.style.visibility = "hidden";
+  timer.style.visibility = "hidden";
+
+  //Hide timer//
+
+  question.innerHTML = "All Done!";
+  //Create text element to display final score //
+
+  pText.innerHTML = "Your final score is " + finalScore
+  // Create text Enter Initials //
+
+  //Create input field for initials//
+
+  //Submit button //
+
+
+}
