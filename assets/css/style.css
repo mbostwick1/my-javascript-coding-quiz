@@ -54,12 +54,12 @@ h1, p, button {
   margin: 3px;
 }
 
-#choices, #wrongAnswer {
+#choices, #answer {
   margin-left: 30px;
   text-align: left;
 }
 
-#wrongAnswer {
+#answer, #answer-text {
   padding-left: 30px;
   padding-right: 30px;
   font-style: italic;

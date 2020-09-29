@@ -8,7 +8,13 @@ var btnOne = document.getElementById("btn1");
 var btnTwo = document.getElementById("btn2");
 var btnThree = document.getElementById("btn3");
 var btnFour = document.getElementById("btn4");
-var wrongAnswerDiv = document.getElementById("wrongAnswer");
+var answerDiv = document.getElementById("answer");
+var answerText = document.getElementById("answer-text");
+
+
+
+// Function to run start quiz //
+startQuiz();
 
 //Timer Variables //
 
@@ -16,21 +22,48 @@ var interval;
 var questionIndex = -1;
 var secondsLeft = 75;
 
-// START QUIZ //
-startQuiz();
-
 // START TIMER //
 
 function startTimer() {
-
-  interval = setInterval(function(){
+  interval = setInterval(function () {
     secondsLeft--;
     timer.textContent = secondsLeft;
-    if (secondsLeft === 0){
+    if (secondsLeft === 0) {
       clearInterval(interval);
-    } 
+    }
   }, 1000);
-};
+}
+
+// Wrong Answer notification and time deduction //
+
+function wrongAnswer() {
+  // wrong answer displays wrong answer div //
+  answerDiv.style.visibility = "visible";
+  answerText.innerHTML = "Wrong!"
+  
+  setTimeout(function () {
+    answerDiv.style.visibility = "hidden";
+  }, 2000);
+
+  //  subtracts 10 seconds //
+  secondsLeft = secondsLeft - 10;
+  timer.innerHTML = secondsLeft;
+}
+
+// Correct Answer notification//
+
+function correctAnswer() {
+  // wrong answer displays wrong answer div //
+  answerDiv.style.visibility = "visible";
+  answerText.innerHTML = "Correct!"
+
+  setTimeout(function () {
+    answerDiv.style.visibility = "hidden";
+  }, 2000);
+
+}
+
+// START QUIZ //
 
 function startQuiz() {
   //Hide Question Container//
@@ -38,18 +71,17 @@ function startQuiz() {
   btnTwo.style.visibility = "hidden";
   btnThree.style.visibility = "hidden";
   btnFour.style.visibility = "hidden";
-  wrongAnswerDiv.style.visibility = "hidden";
+  answerDiv.style.visibility = "hidden";
   // Headline, paragraph and start quiz attributes //
   headline.innerHTML = "Coding Quiz Challenge";
   pText.innerHTML =
     "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
   btn.innerHTML = "Start Quiz";
   btn.onclick = questionOne;
-    
 }
 
 function questionOne() {
-  startTimer(); 
+  startTimer();
   //Hide and show Text/Buttons
   headline.innerHTML = "";
   pText.innerHTML = "";
@@ -74,37 +106,23 @@ function questionOne() {
   btnTwo.onclick = answerWrong;
   btnThree.onclick = answerRight;
   btnFour.onclick = answerWrong;
-   // right answer moves on to next questions //
+  // right answer moves on to next questions //
 
   function answerRight() {
+    correctAnswer();
     questionTwo();
-  };
-  
+  }
+
   function answerWrong() {
     wrongAnswer();
     questionTwo();
-};
- // log users input to local storage //
-   
-};
-
-function wrongAnswer() {
-     // wrong answer displays wrong answer div //
-     wrongAnswerDiv.style.visibility = "visible";
-     setTimeout(function(){
-      wrongAnswerDiv.style.visibility = "hidden";
-   }, 2000);
-
-  //  subtracts 10 seconds //
-    secondsLeft = secondsLeft - 10;
-    timer.innerHTML = secondsLeft;
-
-};
+  }
+}
 
 function questionTwo() {
-
   //Question//
-  question.innerHTML = "The condition in an if/else statement is enclosed within ________.";
+  question.innerHTML =
+    "The condition in an if/else statement is enclosed within ________.";
 
   //Choices//
   btnOne.innerHTML = "1. quotes";
@@ -114,17 +132,112 @@ function questionTwo() {
 
   // on clicks for answer buttons //
 
-  btnOne.onclick = questionTwo;
-  btnTwo.onclick = questionTwo;
-  btnThree.onclick = questionTwo;
-  btnFour.onclick = questionTwo;
+  btnOne.onclick = answerWrong;
+  btnTwo.onclick = answerWrong;
+  btnThree.onclick = answerRight;
+  btnFour.onclick = answerWrong;
 
-   // right answer moves on to next questions //
-  
- // log users input to local storage //
+  function answerRight() {
+    correctAnswer();
+    questionThree();
+  }
 
-    
-};
+  function answerWrong() {
+    wrongAnswer();
+    questionThree();
+  }
+}
+
+function questionThree() {
+  //Question//
+  question.innerHTML =
+    "Arrays in JavaScript can be used to store ________.";
+
+  //Choices//
+  btnOne.innerHTML = "1. numbers and strings";
+  btnTwo.innerHTML = "2. other arrays";
+  btnThree.innerHTML = "3. booleans";
+  btnFour.innerHTML = "4. all of the above";
+
+  // on clicks for answer buttons //
+
+  btnOne.onclick = answerWrong;
+  btnTwo.onclick = answerWrong;
+  btnThree.onclick = answerWrong;
+  btnFour.onclick = answerRight;
+
+  function answerRight() {
+    correctAnswer();
+    questionFour();
+  }
+
+  function answerWrong() {
+    wrongAnswer();
+    questionFour();
+  }
+}
+
+function questionFour() {
+  //Question//
+  question.innerHTML =
+    "String values must be enclosed within ________ when being assigned to variables.";
+
+  //Choices//
+  btnOne.innerHTML = "1. commas";
+  btnTwo.innerHTML = "2. curly brackets";
+  btnThree.innerHTML = "3. quotes";
+  btnFour.innerHTML = "4. parentheses";
+
+  // on clicks for answer buttons //
+
+  btnOne.onclick = answerWrong;
+  btnTwo.onclick = answerWrong;
+  btnThree.onclick = answerRight;
+  btnFour.onclick = answerWrong;
+
+  function answerRight() {
+    correctAnswer();
+    questionFive();
+  }
+
+  function answerWrong() {
+    wrongAnswer();
+    questionFive();
+  }
+}
+
+
+function questionFive() {
+  //Question//
+  question.innerHTML =
+    "A very useful tool used during development and debugging for printing content to the debugger is:";
+
+  //Choices//
+  btnOne.innerHTML = "1. Javascript";
+  btnTwo.innerHTML = "2. terminal/bash";
+  btnThree.innerHTML = "3. for loops";
+  btnFour.innerHTML = "4. console.log";
+
+  // on clicks for answer buttons //
+
+  btnOne.onclick = answerWrong;
+  btnTwo.onclick = answerWrong;
+  btnThree.onclick = answerWrong;
+  btnFour.onclick = answerRight;
+
+  function answerRight() {
+    // LOG TIME and go to high score page//
+  }
+
+  function answerWrong() {
+    // LOG TIME - 10 seconds and go to high score page//
+  }
+}
+
+
+
+
 
 
 //Logging Scores
+
