@@ -13,9 +13,15 @@ btn1.innerHTML = "Go Back";
 btn2.innerHTML = "Clear High Scores";
 // High Scores Page //
 
-function goToHighScores() {
+// Show Users scores //
+displayScores();
+
+function displayScores() {
   // event.preventDefault();
-
-
-
+  var lastUser = JSON.parse(localStorage.getItem("userInitials"));
+  console.log(lastUser);
+  var lastScore = localStorage.getItem("finalScore");
+  listOfScores.textContent = "1. " + lastUser + "  " + lastScore;
 }
+
+

@@ -8,12 +8,13 @@ var btnOne = document.getElementById("btn1");
 var btnTwo = document.getElementById("btn2");
 var btnThree = document.getElementById("btn3");
 var btnFour = document.getElementById("btn4");
+var choices = document.getElementById("choices");
 var answerDiv = document.getElementById("answer");
 var answerText = document.getElementById("answer-text");
-var form = document.getElementById("form");
 var container = document.getElementById("startContainer");
-var choices = document.getElementById("choices");
-var submit = document.getElementById("submit");
+var form = document.getElementById("form");
+var initials= document.getElementById("initials");
+var submitBtn = document.getElementById("submitBtn");
 
 // Function to run start quiz //
 startQuiz();
@@ -236,7 +237,6 @@ function answerFinalRight() {
   finalScore = secondsLeft;
   console.log(finalScore);
   clearInterval(interval);
-  localStorage.setItem("finalScore", finalScore);
   
   yourFinalScore();
 
@@ -248,7 +248,6 @@ function answerFinalWrong() {
   finalScore = secondsLeft - 10;
   console.log(finalScore);
   clearInterval(interval);
-  localStorage.setItem("finalScore", finalScore);
 
   yourFinalScore();
 }
@@ -256,7 +255,7 @@ function answerFinalWrong() {
 // High Scores Page //
 
 function yourFinalScore() {
-  // event.preventDefault();
+  
   btnOne.style.visibility = "hidden";
   btnTwo.style.visibility = "hidden";
   btnThree.style.visibility = "hidden";
@@ -275,8 +274,18 @@ function yourFinalScore() {
   container.appendChild(form);
   container.removeChild(choices);
 
-  //Submit button //
+  submitBtn.onclick = submitScore;
 
+}
 
+//SUBMIT initials and score to local storage and move to high scores page! //  
+
+function submitScore(event){
+    event.preventDefault();
+   //Submit button //
+   var userInitials = initials.value;
+   localStorage.setItem("initials", JSON.stringify(userInitials));
+   localStorage.setItem("finalScore", finalScore);
+   window.location.href = "highScores.html"
 
 }
