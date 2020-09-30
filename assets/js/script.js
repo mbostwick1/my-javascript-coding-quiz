@@ -36,7 +36,8 @@ function startTimer() {
     if (secondsLeft === 0) {
       clearInterval(interval);
       // Redirect to scores page if timer runs out //
-      window.location.href= "highScores.html";
+      finalScore = 0;
+      yourFinalScore();
     }
   }, 1000);
 }
@@ -290,4 +291,3 @@ function submitScore(event) {
   localStorage.setItem("userInfo", JSON.stringify(userArray));
   window.location.href = "highScores.html";
 }
-
