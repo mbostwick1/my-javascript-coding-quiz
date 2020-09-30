@@ -7,11 +7,11 @@ nav {
 }
 
 #high-scores {
-  color: #6338A9;  
+  color: #6338a9;
 }
 
 #high-scores:hover {
-  color: #4F2A89;
+  color: #4f2a89;
   text-decoration: none;
 }
 
@@ -26,37 +26,38 @@ nav {
 }
 
 .container {
-   text-align: center;
-   padding: auto;
+  text-align: center;
+  padding: auto;
 }
 
-h1, p, button {
+h1,
+p,
+button {
   padding: 5px;
 }
 
 /* Button Styling */
 .btn {
-  background-color: #6338A9;
+  background-color: #6338a9;
   border: 0 none;
   padding: auto 10px;
   color: white;
 }
 
 .btn:hover {
-    background-color: #4F2A89;
-    border: 0 none;
-    color: white;
+  background-color: #4f2a89;
+  border: 0 none;
+  color: white;
 }
 
-#btn1, #btn2, #btn3, #btn4 {
+#btn,
+#btn1,
+#btn2,
+#btn3,
+#btn4 {
   margin: 3px;
-}
-
- /* Removes blue bootstrap halo */
-
- #btn, #btn1, #btn2, #btn3, #btn4 {
+  /* Removes blue bootstrap halo */
   outline: 0 !important;
-  box-shadow: none !important;
 }
 
 /* Choices/Answer Div */
@@ -65,13 +66,14 @@ h1, p, button {
   padding-left: 20px;
 }
 
-#choices, #answer {
+#choices,
+#answer {
   text-align: left;
 }
 
-#answer, #answer-text {
+#answer,
+#answer-text {
   font-style: italic;
 }
 
-/* High Scores */
 

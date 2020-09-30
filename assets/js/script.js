@@ -13,8 +13,10 @@ var answerDiv = document.getElementById("answer");
 var answerText = document.getElementById("answer-text");
 var container = document.getElementById("startContainer");
 var form = document.getElementById("form");
-var initials= document.getElementById("initials");
 var submitBtn = document.getElementById("submitBtn");
+var initials = document.getElementById("initials");
+
+var userArray = [];
 
 // Function to run start quiz //
 startQuiz();
@@ -22,7 +24,7 @@ startQuiz();
 //Timer Variables //
 
 var interval;
-var secondsLeft = 75;
+var secondsLeft = 10;
 var finalScore;
 
 // START TIMER //
@@ -33,6 +35,8 @@ function startTimer() {
     timer.textContent = secondsLeft;
     if (secondsLeft === 0) {
       clearInterval(interval);
+      // Redirect to scores page if timer runs out //
+      window.location.href= "highScores.html";
     }
   }, 1000);
 }
@@ -42,8 +46,8 @@ function startTimer() {
 function wrongAnswer() {
   // wrong answer displays wrong answer div //
   answerDiv.style.visibility = "visible";
-  answerText.innerHTML = "Wrong!"
-  
+  answerText.innerHTML = "Wrong!";
+
   setTimeout(function () {
     answerDiv.style.visibility = "hidden";
   }, 3000);
@@ -58,12 +62,11 @@ function wrongAnswer() {
 function correctAnswer() {
   // wrong answer displays wrong answer div //
   answerDiv.style.visibility = "visible";
-  answerText.innerHTML = "Correct!"
+  answerText.innerHTML = "Correct!";
 
   setTimeout(function () {
     answerDiv.style.visibility = "hidden";
   }, 3000);
-
 }
 
 // START QUIZ //
@@ -156,8 +159,7 @@ function questionTwo() {
 
 function questionThree() {
   //Question//
-  question.innerHTML =
-    "Arrays in JavaScript can be used to store ________.";
+  question.innerHTML = "Arrays in JavaScript can be used to store ________.";
 
   //Choices//
   btnOne.innerHTML = "1. numbers and strings";
@@ -237,9 +239,8 @@ function answerFinalRight() {
   finalScore = secondsLeft;
   console.log(finalScore);
   clearInterval(interval);
-  
-  yourFinalScore();
 
+  yourFinalScore();
 }
 
 function answerFinalWrong() {
@@ -255,7 +256,6 @@ function answerFinalWrong() {
 // High Scores Page //
 
 function yourFinalScore() {
-  
   btnOne.style.visibility = "hidden";
   btnTwo.style.visibility = "hidden";
   btnThree.style.visibility = "hidden";
@@ -275,17 +275,19 @@ function yourFinalScore() {
   container.removeChild(choices);
 
   submitBtn.onclick = submitScore;
+}
+//SUBMIT initials and score to local storage and move to high scores page! //
 
+function submitScore(event) {
+  event.preventDefault();
+  //Submit button //
+  var userInitials = initials.value;
+  var storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+  if (storedUserInfo !== null) {
+    userArray = storedUserInfo;
+  }
+  userArray.push({ name: userInitials, score: finalScore });
+  localStorage.setItem("userInfo", JSON.stringify(userArray));
+  window.location.href = "highScores.html";
 }
 
-//SUBMIT initials and score to local storage and move to high scores page! //  
-
-function submitScore(event){
-    event.preventDefault();
-   //Submit button //
-   var userInitials = initials.value;
-   localStorage.setItem("initials", JSON.stringify(userInitials));
-   localStorage.setItem("finalScore", finalScore);
-   window.location.href = "highScores.html"
-
-}
