@@ -23,7 +23,8 @@ window.onload = function renderScores() {
       "class",
       "list-group-item list-group-item-primary"
     );
-    listOfScores.style.backgroundColor = "#bd9cf1";
+    listOfScores.style.backgroundColor = "#D5C3F2";
+    listOfScores.style.color = "#4f2a89";
     listOfScores.textContent =
       i +
       1 +

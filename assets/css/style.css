@@ -42,6 +42,8 @@ button {
   border: 0 none;
   padding: auto 10px;
   color: white;
+  /* Removes blue bootstrap halo */
+  margin: 3px;
 }
 
 .btn:hover {
@@ -50,14 +52,11 @@ button {
   color: white;
 }
 
-#btn,
-#btn1,
-#btn2,
-#btn3,
-#btn4 {
-  margin: 3px;
-  /* Removes blue bootstrap halo */
+.btn:focus, .btn:active {
+  background-color: #6338a9;
+  color: white;
   outline: 0 !important;
+  box-shadow: none;
 }
 
 /* Choices/Answer Div */

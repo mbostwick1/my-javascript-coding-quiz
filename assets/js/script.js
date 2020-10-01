@@ -51,7 +51,7 @@ function wrongAnswer() {
 
   setTimeout(function () {
     answerDiv.style.visibility = "hidden";
-  }, 3000);w
+  }, 3000);
 
   //  subtracts 10 seconds //
   secondsLeft = secondsLeft - 10;
