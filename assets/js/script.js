@@ -24,7 +24,7 @@ startQuiz();
 //Timer Variables //
 
 var interval;
-var secondsLeft = 10;
+var secondsLeft = 75;
 var finalScore;
 
 // START TIMER //
@@ -51,7 +51,7 @@ function wrongAnswer() {
 
   setTimeout(function () {
     answerDiv.style.visibility = "hidden";
-  }, 3000);
+  }, 3000);w
 
   //  subtracts 10 seconds //
   secondsLeft = secondsLeft - 10;
